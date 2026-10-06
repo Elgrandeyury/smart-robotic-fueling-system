@@ -2,90 +2,128 @@
 
 # Smart / Robotic Fueling System
 
-### Automation · Embedded Systems · Cloud Integration
+### Embedded Systems · Automation · IoT · Cloud · Robotics
 
-A systems-engineering project exploring how fueling operations can be made more automated, traceable, and connected through software, embedded control, and cloud services.
+A portfolio case study for a connected fueling concept that combines vehicle identification, embedded control, operational data, cloud services, and a future path toward robotic physical interaction.
 
-![Status](https://img.shields.io/badge/status-active%20project-0A7EA4?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-engineering%20case%20study-0A7EA4?style=for-the-badge)
 ![Focus](https://img.shields.io/badge/focus-IoT%20%7C%20Automation%20%7C%20Cloud-232F3E?style=for-the-badge)
-![Platform](https://img.shields.io/badge/platform-hardware%20%2B%20software-D9B86C?style=for-the-badge)
+![Scope](https://img.shields.io/badge/public%20scope-high--level-D9B86C?style=for-the-badge)
 
 </div>
 
 ---
 
-## Project overview
+## Why this project exists
 
-This project combines **embedded systems, automation, software, and cloud/backend concepts** around a smarter fueling workflow.
+Fueling is a physical process, but many of the problems around it are digital: **identification, authorization, traceability, operational visibility, and coordination between devices and software**.
 
-The goal is to reduce manual steps, improve traceability, and explore how connected systems can support safer and more efficient fueling operations.
+This project explores a system in which a vehicle or user can be identified, an authorized fueling workflow can be triggered, operational events can be recorded, and software/cloud services can provide visibility around the process.
 
-The project includes work across areas such as:
+The project originally involved hands-on prototype work around **RFID identification, embedded control, sensors, application/backend concepts, and fueling automation**. The original implementation artifacts are no longer available, so this repository does **not** pretend to contain the historic source code, wiring, or prototype proof.
 
-- identification and access control
-- embedded control and sensing
-- automation logic
-- backend / cloud integration
-- transaction and event visibility
-- future robotic interaction concepts
-
-> This public repository is intentionally high-level. Detailed control logic, hardware implementation, wiring, backend design, and other sensitive implementation details are not published here.
+Instead, this repository documents the engineering concept accurately as a **public case study** and separates known project direction from future concepts.
 
 ---
 
-## High-level concept
+## System concept
 
 ```mermaid
 flowchart LR
-    A[Vehicle / User] --> B[Identification]
-    B --> C[Authorization]
-    C --> D[Automated Fueling Process]
-    D --> E[Operational Data]
-    E --> F[Backend / Cloud]
-    F --> G[Dashboard / Records]
+    A[Vehicle / User] --> B[Identification Layer]
+    B --> C[Authorization Layer]
+    C --> D[Embedded Control Layer]
+    D --> E[Fueling / Physical Process]
+    E --> F[Operational Events]
+    F --> G[Backend / Cloud Layer]
+    G --> H[Dashboard / Records]
 
-    H[Robotic Automation] -.future direction.-> D
+    I[Robotic Interaction] -. future evolution .-> E
+    J[Safety / Fault Conditions] -. influence .-> D
 ```
 
-The focus of the project is the integration between **physical systems and digital infrastructure**, rather than any single component.
+The engineering value is in the **integration between physical systems and digital infrastructure** rather than in any single component.
 
 ---
 
-## Engineering areas
+## Engineering layers
 
-| Area | Focus |
+| Layer | Responsibility |
 |---|---|
-| **Embedded Systems** | Device-level control, sensing, and interaction with the physical process |
-| **Automation** | Coordinating system actions and reducing manual intervention |
-| **Cloud / Backend** | Supporting connected data, records, and system visibility |
-| **IoT** | Connecting physical hardware with software and networked services |
-| **Robotics** | Exploring future automation of physical fueling interactions |
+| **Identification** | Recognize a vehicle or user through a suitable identity mechanism such as RFID |
+| **Authorization** | Decide whether the requested fueling action is permitted |
+| **Embedded control** | Read inputs, coordinate device actions, and manage the local process |
+| **Physical process** | Interact with the fueling hardware and related sensors/actuators |
+| **Backend / cloud** | Receive operational events, store records, and support connected services |
+| **Dashboard** | Present system state, transaction history, alerts, and operational information |
+| **Robotics** | Future direction for reducing manual physical interaction |
 
 ---
 
-## Project status
+## Simplified operating flow
 
-This repository is maintained as a **portfolio case study** for the project.
+```text
+1. Vehicle / user arrives
+2. Identity is presented
+3. Authorization is checked
+4. Embedded system coordinates the permitted process
+5. Operational events are generated
+6. Backend / cloud records relevant information
+7. Dashboard provides visibility
+8. Faults or unsafe conditions should interrupt the process
+```
 
-Public content will focus on:
-
-- project purpose
-- high-level architecture
-- selected prototype media
-- technology areas
-- engineering lessons
-- project evolution
-
-Detailed implementation information will remain private.
+Detailed state transitions, sensor thresholds, wiring, control timing, and fail-safe logic are intentionally not published.
 
 ---
 
-## Repository structure
+## What is historical vs. conceptual
+
+| Area | Public status |
+|---|---|
+| RFID-based identification concept | Part of the original project direction |
+| Embedded controller / sensor integration | Part of the original project direction |
+| Connected application/backend idea | Part of the original project direction |
+| Transaction / event visibility | Part of the system concept |
+| Full production fueling hardware | Not claimed in this repository |
+| Production-grade autonomous robotic fueling | Future direction / concept |
+| Historic source code, wiring, and prototype media | Not available |
+
+This distinction is intentional. The repository is designed to show **systems thinking without inventing evidence**.
+
+---
+
+## Design priorities
+
+### Safety before automation
+
+Automation around a physical fueling process must treat unsafe conditions, manual intervention, and fault handling as first-class concerns. This repository therefore discusses safety only at a high level and does not publish operational control parameters.
+
+### Traceability
+
+A connected system should make important events visible: identification, authorization outcome, process start/stop, faults, and transaction records.
+
+### Separation of responsibilities
+
+The design separates identity, authorization, device control, operational data, backend services, and user-facing visibility so that each layer can evolve independently.
+
+### Least exposure
+
+A public portfolio should show architecture and reasoning without exposing implementation details that could be unsafe, commercially sensitive, or misleading.
+
+---
+
+## Repository map
 
 ```text
 smart-robotic-fueling-system/
 ├── README.md
 ├── docs/
+│   ├── system-overview.md
+│   ├── workflow.md
+│   ├── security-and-safety.md
+│   ├── architecture-decisions.md
+│   └── roadmap.md
 ├── hardware/
 ├── firmware/
 ├── backend/
@@ -93,26 +131,47 @@ smart-robotic-fueling-system/
 └── assets/
 ```
 
-As the project develops, these sections will contain selected public material without exposing sensitive implementation details.
+### Documentation
+
+- [`docs/system-overview.md`](docs/system-overview.md) — system boundaries and architecture
+- [`docs/workflow.md`](docs/workflow.md) — operating flow and failure-aware sequence
+- [`docs/security-and-safety.md`](docs/security-and-safety.md) — security and safety design principles
+- [`docs/architecture-decisions.md`](docs/architecture-decisions.md) — major engineering decisions and trade-offs
+- [`docs/roadmap.md`](docs/roadmap.md) — realistic implementation path from case study to demonstrable prototype
 
 ---
 
-## Public roadmap
+## Public repository boundary
 
-- [x] Define the project concept and scope
-- [x] Create a public engineering case-study repository
-- [ ] Add selected prototype photos
-- [ ] Add selected system screenshots
-- [ ] Add a simplified architecture visual
-- [ ] Add a project demo / video
-- [ ] Document key engineering lessons
-- [ ] Publish selected non-sensitive technical material
+This repository deliberately does **not** publish:
+
+- exact wiring diagrams
+- component-level control logic
+- fueling control parameters
+- detailed sensor thresholds
+- security credentials or secrets
+- production backend internals
+- unsafe or unverified automation instructions
+
+The goal is to demonstrate engineering reasoning, not provide a blueprint for a real fuel-handling system.
 
 ---
 
-## Technology areas
+## Portfolio value
 
-`Embedded Systems` · `IoT` · `Automation` · `Cloud` · `Backend` · `RFID` · `Sensors` · `Robotics`
+This project demonstrates how I approach a problem that crosses multiple engineering domains:
+
+`Embedded Systems` · `RFID` · `Sensors` · `Automation` · `IoT` · `Backend` · `Cloud` · `Operational Data` · `Robotics`
+
+It is also an example of **systems integration thinking**: connecting identity, software, devices, networks, data, and physical processes into one architecture.
+
+---
+
+## Current status
+
+**Public case study: complete**
+
+The historic prototype is not being represented as a currently reproducible build. Future work, if resumed, would start with a new safe prototype and publish only verified, non-sensitive evidence.
 
 ---
 
@@ -120,6 +179,6 @@ As the project develops, these sections will contain selected public material wi
 
 ### Physical Systems × Software × Automation × Cloud
 
-<sub>Public case study — implementation details intentionally limited.</sub>
+<sub>Engineering case study — implementation details intentionally limited.</sub>
 
 </div>
